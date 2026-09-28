@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UCID Validation</title>
+</head>
+
+<body>
+
+    <h2>UCID Validation Form</h2>
+
+    <form onsubmit="validateUCID(); return false;">
+
+        <label for="ucid">Enter your UCID:</label>
+
+        <input
+            type="text"
+            id="ucid"
+            name="ucid"
+            placeholder="Enter UCID"
+            title="A valid UCID must contain letters followed by zero to three digits."
+        >
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+        function validateUCID() {
+
+            // Get the UCID entered by the user
+            const ucid = document.getElementById("ucid").value;
+
+            // Regular expression:
+            // One or more letters followed by zero to three digits
+            const pattern = /^[A-Za-z]+[0-9]{0,3}$/;
+
+            // List of valid UCIDs
+            const validUCIDs = ["abc", "abc1", "student123", "njit1", "test99"];
+
+            // Check if the UCID follows the correct format
+            if (pattern.test(ucid)) {
+
+                // Check if the UCID is in our list
+                if (validUCIDs.includes(ucid)) {
+                    alert("VALID UCID FORMAT AND UCIID FOUND");
+                } else {
+                    alert("VALID UCID FORMAT BUT INVALID UCID");
+                }
+
+            } else {
+                alert("UCID DOES NOT CONFORM TO VALID FORMAT");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
